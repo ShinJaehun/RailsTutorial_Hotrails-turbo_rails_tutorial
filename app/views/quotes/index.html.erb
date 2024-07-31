@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Quotes</h1>
+
+ <div id="quotes">
+  <% @quotes.each do |quote| %>
+    <%= render quote %>
+  <% end %>
+</div>
+
+<%= link_to "New quote", new_quote_path, class: "btn btn-primary", style: "margin-left: 10px;" %>
