@@ -1,13 +1,20 @@
-<div id="<%= dom_id quote %>" style="width: 50rem; display: flex; border: 2px solid; padding: 10px; margin: 10px;">
-  <div>
-    <p>
-      <%= quote.name %>
-    </p>
-  </div>
+<%#= turbo_frame_tag "quote_#{quote.id}" do %>
+<%= turbo_frame_tag quote do %>
+  <div style="width: 50rem; display: flex; border: 2px solid; padding: 10px; margin: 10px 0px;">
+    <div>
+      <p>
+        <%= quote.name %>
+      </p>
+    </div>
 
-  <div style="margin-left: auto;">
-    <%= link_to "Show", quote, class: "btn btn-info" %>
-    <%= link_to "Edit", edit_quote_path(quote), class: "btn btn-success" %>
-    <%= link_to "Destroy", quote, method: :delete, class: "btn btn-danger" %>
+    <div style="margin-left: auto; display: flex;">
+      <%= link_to "Show", quote, class: "btn btn-info me-1", data: { turbo_frame: "_top" } %>
+      <%= link_to "Edit", edit_quote_path(quote), class: "btn btn-success me-1" %>
+      <%#= link_to "Destroy", quote, method: :delete, class: "btn btn-danger", form: { data: { turbo_frame: "_top" } } %>
+      <!-- 헐... link_to는 안되는데 button_to는 왜 되는 겁니까? -->
+      <!-- 잘 모르겠는데 link_to는 <form data-turbo-frame 링크를 생성하지 않음 -->
+      <%#= button_to "Destroy", quote, method: :delete, class: "btn btn-danger", form: {data: {turbo_frame: "_top"}} %>
+      <%= button_to "Destroy", quote, method: :delete, class: "btn btn-danger" %>
+    </div>
   </div>
-</div>
+<% end %>

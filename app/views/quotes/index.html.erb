@@ -1,11 +1,59 @@
 <p style="color: green"><%= notice %></p>
+<main class="container">
 
-<h1>Quotes</h1>
+  <!--
+  <div id="quotes">
+    <%# @quotes.each do |quote| %>
+      <%#= render quote %>
+    <%# end %>
+  </div>
+  -->
+  <!--
+  <div style="width: 50rem; display: flex; border-bottom: 2px solid;">
+    <h1>Quotes</h1>
+    <%#= link_to "New quote", new_quote_path, class: "btn btn-primary", style: "margin: 5px 0px 5px auto;" %>
+  </div>
+  <%#= render @quotes %>
+  -->
+  <!--
+  <%#= turbo_frame_tag "first_turbo_frame" do %>
+    <div style="width: 50rem; display: flex; border-bottom: 2px solid;">
+      <h1>Quotes</h1>
+      <%#= link_to "New quote", new_quote_path, class: "btn btn-primary", style: "margin: 5px 0px 5px auto;" %>
+    </div>
+  <%# end %>
+  <%#= render @quotes %>
+  -->
+  <!--
+  <%#= turbo_frame_tag "first_turbo_frame" do %>
+    <div style="width: 50rem; display: flex; border-bottom: 2px solid;">
+      <h1>Quotes</h1>
+      <%#= link_to "New quote", new_quote_path, data: {turbo_frame: "second_frame"}, class: "btn btn-primary", style: "margin: 5px 0px 5px auto;" %>
+    </div>
+  <%# end %>
+  <%#= turbo_frame_tag "second_frame" do %>
+    <%#= render @quotes %>
+  <%# end %>
+  -->
+  <!--
+  <%#= turbo_frame_tag "first_turbo_frame" do %>
+    <div style="width: 50rem; display: flex; border-bottom: 2px solid;">
+      <h1>Quotes</h1>
+      <%#= link_to "New quote", new_quote_path, data: {turbo_frame: "_top"}, class: "btn btn-primary", style: "margin: 5px 0px 5px auto;" %>
+    </div>
+  <%# end %>
+  <%#= render @quotes %>
+  -->
 
- <div id="quotes">
-  <% @quotes.each do |quote| %>
-    <%= render quote %>
+  <div style="width: 50rem; display: flex; border-bottom: 2px solid;">
+    <h1>Quotes</h1>
+    <%= link_to "New quote", new_quote_path, class: "btn btn-primary", data: { turbo_frame: dom_id(Quote.new)}, style: "margin: 10px 0px 10px auto;" %>
+  </div>
+
+  <%= turbo_frame_tag Quote.new %>
+
+  <%= turbo_frame_tag "quotes" do %>
+    <%= render @quotes %>
   <% end %>
-</div>
 
-<%= link_to "New quote", new_quote_path, class: "btn btn-primary", style: "margin-left: 10px;" %>
+</main>

@@ -1,6 +1,11 @@
 <h1>Editing quote</h1>
-
-<%= render "form", quote: @quote %>
+<!--
+<%#= render "form", quote: @quote %>
+-->
+<%#= turbo_frame_tag "quote_#{@quote.id}" do %>
+<%= turbo_frame_tag @quote do %>
+  <%= render "form", quote: @quote %>
+<% end %>
 
 <br>
 
